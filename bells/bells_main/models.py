@@ -24,6 +24,10 @@ STATUS_BELL = (
 class Temple(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=200)
+    
+    class Meta:
+        verbose_name="Храм"
+        verbose_name_plural = "Храмы"
 
     def __str__(self):
         return self.name
@@ -32,6 +36,10 @@ class Belltower(models.Model):
     temple = models.OneToOneField(Temple, on_delete=models.CASCADE, primary_key=True)
     belltower_name = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name="Колокольня"
+        verbose_name_plural = "Колокольни"
+    
     def __str__(self):
         return self.belltower_name
 
@@ -43,7 +51,10 @@ class Bell(models.Model):
     status = models.CharField(max_length=50, choices=STATUS_BELL, default="PENDING")
     image = models.ImageField(upload_to='bell_images/')
     belltower = models.ForeignKey(Belltower, on_delete=models.CASCADE, related_name='bells')
-
+    
+    class Meta:
+        verbose_name="Колокол"
+        verbose_name_plural = "Колоколы"
     def __str__(self):
         return self.name
 
@@ -83,7 +94,6 @@ class CustomUser(AbstractUser, PermissionsMixin):
     is_bell_ringer = models.BooleanField(default=False)
 
     objects = CustomUserManager()
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['phone_number', 'user_type']
 
@@ -105,6 +115,10 @@ class BellMovementRequest(models.Model):
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="PENDING")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name="Перемещение колокола"
+        verbose_name_plural = "Перемещение колоколов"
 
     def __str__(self):
         return f"Обращение {self.requester.get_full_name()} к {self.destination_church}"
