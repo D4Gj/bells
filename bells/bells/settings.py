@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import contextlib
+import os
 import re
 from pathlib import Path
 from typing import Any
@@ -70,7 +71,7 @@ ROOT_URLCONF = "bells.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(BASE_DIR, 'templates')],  # noqa: PTH118, Q000
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -256,3 +257,5 @@ if config.SENTRY_DSN:
         send_default_pii=True,
         traces_sampler=_sentry_traces_sampler,
     )
+
+AUTH_USER_MODEL = 'bells_main.CustomUser'
