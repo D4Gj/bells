@@ -1,0 +1,26 @@
+<!-- bell_movement_request_detail.html -->
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bell Movement Request Detail</title>
+</head>
+<body>
+    <h1>Bell Movement Request Detail</h1>
+    <ul>
+        <li>Requester: {{ movement_request.requester }}</li>
+        <li>Reason: {{ movement_request.reason }}</li>
+        <li>Bell: {{ movement_request.bell }}</li>
+        <li>Temple From: {{ movement_request.temple_from }}</li>
+        <li>Temple To: {{ movement_request.temple_to }}</li>
+        <li>Belltower From: {{ movement_request.belltowerfrom }}</li>
+        <li>Belltower To: {{ movement_request.belltowerto }}</li>
+        <li>Status: {{ movement_request.status }}</li>
+        <li>Created At: {{ movement_request.created_at }}</li>
+        <li>Updated At: {{ movement_request.updated_at }}</li>
+    </ul>
+</body>
+</html>
+{% endblock%}

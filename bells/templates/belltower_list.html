@@ -1,0 +1,22 @@
+<!-- belltower_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bell Towers</title>
+</head>
+<body>
+    <h1>Bell Towers</h1>
+    <ul>
+        {% for belltower in belltowers %}
+            <li>
+                {{ belltower.belltower_name }}
+                <a href="{% url 'edit_belltower' belltower.pk %}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

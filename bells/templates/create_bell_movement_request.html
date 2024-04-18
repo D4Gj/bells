@@ -1,20 +1,19 @@
-<!-- templates/registration/login.html -->
+<!-- create_bell_movement_request.html -->
 {% extends 'base.html' %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Запрос на перемещение</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <h1>Запрос на перемещение</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">сохранить</button>
     </form>
 </body>
 </html>
-{% endblock %}
+{% endblock%}

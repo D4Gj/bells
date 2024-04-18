@@ -1,0 +1,19 @@
+<!-- edit_bell_movement_request.html -->
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение запроса на перемещение</title>
+</head>
+<body>
+    <h1>Изменение запроса на перемещение</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+</body>
+</html>
+{% endblock%}

@@ -1,15 +1,58 @@
+<!-- base.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block head_title %}{% endblock %}</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <title>{% block title %}My App{% endblock %}</title>
+    <style>
+        header {
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+        nav {
+            white-space: nowrap;
+            overflow-x: auto; /* Add horizontal scroll if needed */
+        }
+        nav > div {
+            display: inline-block;
+            margin-right: 20px;
+        }
+    </style>
 </head>
 <body>
 
-<div id="container">
+    <header>
+        {% if user.is_authenticated %}
+        <nav>
+            <div><a href="{% url 'home' %}">Home</a></div>
+            <div><a href="{% url 'bell_list' %}">Bell List</a></div>
+            <div><a href="{% url 'create_bell' %}">Create Bell</a></div>
+            <div><a href="{% url 'create_belltower' %}">Create BellTower</a></div>
+            <div><a href="{% url 'create_bell_movement_request' %}">Create Movement Request</a></div>
+            <div><a href="{% url 'bell_movement_request_list' %}">Movement Request List</a></div>
+            <div><a href="{% url 'belltower_list' %}">BellTowers</a></div>
+            <div><a href="{% url 'admin:index' %}">Admin page</a></div>
+            <div>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+            </div>
+            <!-- Add other links as needed -->
+        </nav>
+        {% else %}
+        <nav>
+            <div><a href="{% url 'home' %}">Home</a></div>
+            <div><a href="{% url 'login' %}">Login</a></div>
+            <!-- Add other links for registration, etc., if needed -->
+        </nav>
+        {% endif %}
+    </header>
+
+<main>
     {% block content %}
     {% endblock %}
-</div>
+</main>
 
 </body>
 </html>

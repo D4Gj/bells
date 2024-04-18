@@ -1,0 +1,79 @@
+<!-- bell_list.html -->
+{% extends 'base.html' %}
+{% load status_filters %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bell List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .bell-image {
+            max-width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список колоколов</h1>
+    <form method="get" action="{% url 'bell_list' %}">
+        <label for="status">Фильтр по статусу</label>
+        <select name="status" id="status">
+            <option value="" {% if not selected_status %}selected{% endif %}>Все</option>
+            <option value="READY_TO_TRANSFER" {% if selected_status == 'READY_TO_TRANSFER' %}selected{% endif %}>Готов к передаче</option>
+            <option value="IN_REQUEST_FOR_APPROVAL" {% if selected_status == 'IN_REQUEST_FOR_APPROVAL' %}selected{% endif %}>В заявке на согласование</option>
+            <option value="IN_USE" {% if selected_status == 'IN_USE' %}selected{% endif %}>Используется</option>
+            <option value="BELL_MISSING" {% if selected_status == 'BELL_MISSING' %}selected{% endif %}>Не хватает колокола</option>
+        </select>
+        <button type="submit">Фильтровать</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Weight</th>
+                <th>Manufacturer</th>
+                <th>Audio File</th>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Belltower</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bell in bell_list %}
+                <tr>
+                    <td>{{ bell.name }}</td>
+                    <td>{{ bell.weight }}</td>
+                    <td>{{ bell.manufacturer }}</td>
+                    <td>{{ bell.audio_file }}</td>
+                    <td>{{ bell.status|translate_status }}</td>
+                    <td>
+                        {% if bell.image %}
+                            <img src="{{ bell.image.url }}" alt="{{ bell.name }}" class="bell-image">
+                        {% else %}
+                            Нет фото
+                        {% endif %}
+                    </td>
+                    <td>{{ bell.belltower }}</td>
+                    <td>
+                        <a href="{% url 'edit_bell' pk=bell.pk %}">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock%}

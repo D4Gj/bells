@@ -71,7 +71,7 @@ ROOT_URLCONF = "bells.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [os.path.join(BASE_DIR, 'templates')],  # noqa: PTH118, Q000
+        "DIRS": [os.path.join(BASE_DIR, "templates")],  # noqa: PTH118, Q000
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -97,18 +97,18 @@ DATABASES = {"default": dj_database_url.parse(config.DATABASE_URL)}
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    # {
+    #     "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    # },
+    # {
+    #     "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+    # },
+    # {
+    #     "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+    # },
+    # {
+    #     "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+    # },
 ]
 
 
@@ -258,4 +258,4 @@ if config.SENTRY_DSN:
         traces_sampler=_sentry_traces_sampler,
     )
 
-AUTH_USER_MODEL = 'bells_main.CustomUser'
+AUTH_USER_MODEL = "bells_main.CustomUser"

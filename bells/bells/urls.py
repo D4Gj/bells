@@ -15,11 +15,11 @@ Including another URLconf
 """
 
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 from django.urls import include, path
-from bells_main.views import registration_view
 
 urlpatterns = [
     path("bells-admin/", admin.site.urls),
     path("-/", include("django_alive.urls")),
-    path('', include('bells_main.urls')),
+    path("", include("bells_main.urls")),
 ]

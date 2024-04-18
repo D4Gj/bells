@@ -1,0 +1,46 @@
+<!-- bell_movement_request_list.html -->
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bell Movement Requests</title>
+</head>
+<body>
+    <h1>Bell Movement Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Requester</th>
+                <th>Reason</th>
+                <th>Bell</th>
+                <th>Temple From</th>
+                <th>Temple To</th>
+                <th>Belltower From</th>
+                <th>Belltower To</th>
+                <th>Status</th>
+                <th>Actions</th>  <!-- Column for the edit button -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for movement_request in movement_requests %}
+            <tr>
+                <td>{{ movement_request.requester }}</td>
+                <td>{{ movement_request.reason }}</td>
+                <td>{{ movement_request.bell }}</td>
+                <td>{{ movement_request.temple_from }}</td>
+                <td>{{ movement_request.temple_to }}</td>
+                <td>{{ movement_request.belltowerfrom }}</td>
+                <td>{{ movement_request.belltowerto }}</td>
+                <td>{{ movement_request.status }}</td>
+                <td>
+                    <a href="{% url 'edit_bell_movement_request' pk=movement_request.pk %}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+{% endblock%}
