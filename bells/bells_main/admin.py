@@ -46,7 +46,7 @@ class CustomUserAdmin(UserAdmin):
         ),  # Include additional fields
         (
             "Permissions",
-            {"fields": ("user_type", "is_key_keeper", "is_bell_ringer")},
+            {"fields": ("user_type", "is_key_keeper", "is_bell_ringer", "is_superuser")},
         ),  # Include custom fields
         (
             "Important dates",
@@ -73,6 +73,7 @@ class CustomUserAdmin(UserAdmin):
                     "user_type",
                     "is_key_keeper",
                     "is_bell_ringer",
+                    "is_superuser",
                 ),
             },
         ),
