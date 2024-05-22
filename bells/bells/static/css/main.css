@@ -1,0 +1,186 @@
+.container-header {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+
+    a {
+        font: 1rem "Fira Sans", sans-serif;
+        padding-top: 30px;
+        display: block;
+        width: 150px;
+        background: bisque;
+        border-radius: 16px;
+        color: inherit;
+        height: 52px;
+        text-align: center;
+        text-decoration: none;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    button {
+        font: 1rem "Fira Sans", sans-serif;
+        display: block;
+        width: 150px;
+        background: gray;
+        border-radius: 16px;
+        color: inherit;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+.container-header-for-un-log {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        font: 2rem "Fira Sans", sans-serif;
+    }
+
+    a {
+        font: 1rem "Fira Sans", sans-serif;
+        padding-top: 30px;
+        display: block;
+        width: 150px;
+        background: bisque;
+        border-radius: 16px;
+        color: inherit;
+        height: 52px;
+        text-align: center;
+        text-decoration: none;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    button {
+        font: 1rem "Fira Sans", sans-serif;
+        display: block;
+        width: 150px;
+        background: gray;
+        border-radius: 16px;
+        color: inherit;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+.bell-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.main-page-container {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+.login-form {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    input {
+        font: 0.8rem "Fira Sans", sans-serif;
+        padding:10px 10px 10px 5px;
+        display:block;
+        width:300px;
+        border:none;
+        border-bottom:1px solid #757575;
+    }
+    label {
+        font: 1rem "Fira Sans", sans-serif;
+    }
+    button {
+        font: 1rem "Fira Sans", sans-serif;
+        display: block;
+        width: 150px;
+        background: bisque;
+        border-radius: 16px;
+        color: inherit;
+        height: 42px;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 20px;
+        border: 1px solid #dddddd;
+        border-collapse: collapse; 
+    }
+    table th {
+        font-weight: bold;
+        padding: 5px;
+        background: #efefef;
+        border: 1px solid #dddddd;
+        font: 1rem "Fira Sans", sans-serif;
+    }
+    table td {
+        border: 1px solid #dddddd;
+        padding: 5px;
+        font: 1rem "Fira Sans", sans-serif;
+    }
+    img {
+        /* width: 300px; */
+        height: 300px;
+    }
+
+    ul {
+        margin: 0 0 20px 24px;
+        padding: 0;
+        list-style-type: decimal;
+    }
+    ul li {
+        margin: 7px 0;
+        font: 1.2rem "Fira Sans", sans-serif;
+    }
+}
+
+.div-login {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-direction: column;
+    gap:50px;
+
+    h2 {
+        text-align: center;
+        font: 1rem "Fira Sans", sans-serif;
+    }
+}
+
+h2 {
+    text-align: center;
+    font: 2rem "Fira Sans", sans-serif;
+}
+
+.block {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}

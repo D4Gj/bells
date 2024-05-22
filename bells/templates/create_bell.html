@@ -8,12 +8,14 @@
     <title>Create Bell</title>
 </head>
 <body>
-    <h2>Create a Bell</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Create</button>
-    </form>
+    <div>
+    <h2>Создать колокол</h2>
+        <form method="post" enctype="multipart/form-data" class="login-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Создать</button>
+        </form>
+    </div>  
 </body>
 </html>
 {% endblock%}

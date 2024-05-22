@@ -8,15 +8,17 @@
     <title>Bell Towers</title>
 </head>
 <body>
-    <h1>Bell Towers</h1>
-    <ul>
-        {% for belltower in belltowers %}
-            <li>
-                {{ belltower.belltower_name }}
-                <a href="{% url 'edit_belltower' belltower.pk %}">Edit</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="login-form">
+        <h2>Колокольни</h1>
+        <ul>
+            {% for belltower in belltowers %}
+                <li>
+                    {{ belltower.belltower_name }}
+                    <a href="{% url 'edit_belltower' belltower.pk %}">Edit</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
 {% endblock %}

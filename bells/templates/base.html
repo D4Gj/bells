@@ -1,48 +1,36 @@
+{% load static %}
 <!-- base.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}My App{% endblock %}</title>
-    <style>
-        header {
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-        nav {
-            white-space: nowrap;
-            overflow-x: auto; /* Add horizontal scroll if needed */
-        }
-        nav > div {
-            display: inline-block;
-            margin-right: 20px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}"/>
 </head>
 <body>
 
     <header>
         {% if user.is_authenticated %}
-        <nav>
-            <div><a href="{% url 'home' %}">Home</a></div>
-            <div><a href="{% url 'bell_list' %}">Bell List</a></div>
-            <div><a href="{% url 'create_bell' %}">Create Bell</a></div>
-            <div><a href="{% url 'create_belltower' %}">Create BellTower</a></div>
-            <div><a href="{% url 'create_bell_movement_request' %}">Create Movement Request</a></div>
-            <div><a href="{% url 'bell_movement_request_list' %}">Movement Request List</a></div>
-            <div><a href="{% url 'belltower_list' %}">BellTowers</a></div>
-            <div><a href="{% url 'admin:index' %}">Admin page</a></div>
+        <div class="container-header">
+            <div><a href="{% url 'home' %}">Главная</a></div>
+            <div><a href="{% url 'bell_list' %}">Список колоколов</a></div>
+            <div><a href="{% url 'create_bell' %}">Создать колокол</a></div>
+            <div><a href="{% url 'create_belltower' %}">Создать колокольню</a></div>
+            <!-- <div><a href="{% url 'create_bell_movement_request' %}">Create Movement Request</a></div>
+            <div><a href="{% url 'bell_movement_request_list' %}">Movement Request List</a></div> -->
+            <div><a href="{% url 'belltower_list' %}">Колокольни</a></div>
+            <div><a href="{% url 'admin:index' %}">Страница Админа</a></div>
             <div>
                 <form action="{% url 'logout' %}" method="post">
                     {% csrf_token %}
-                    <button type="submit">Logout</button>
+                    <button type="submit">Выйти</button>
                 </form>
             </div>
             <!-- Add other links as needed -->
         </nav>
         {% else %}
-        <nav>
-            <div><a href="{% url 'home' %}">Home</a></div>
+        <nav class="container-header-for-un-log">
+            <h1>Авторизуйтесь</h1>
             <div><a href="{% url 'login' %}">Login</a></div>
             <!-- Add other links for registration, etc., if needed -->
         </nav>

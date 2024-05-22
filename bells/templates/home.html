@@ -1,14 +1,21 @@
 <!-- home.html -->
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Главная</title>
 </head>
 <body>
-    <h1>Welcome to the Home Page</h1>
+    <div class="main-page-container">
+        <img
+    class="bell-icon"
+  src="{% static "css/gas-kvas-com-p-devochka-s-kolokolchikom-na-prozrachnom-fo-41.png" %}"
+  alt="Grapefruit slice atop a pile of other slices" />
+    </div>
+
     <!-- Add any content you want for your home page -->
 </body>
 </html>
