@@ -45,9 +45,9 @@ class Bell(models.Model):
     name = models.CharField(max_length=100)
     weight = models.FloatField()
     manufacturer = models.CharField(max_length=100)
-    audio_file = models.FileField(upload_to="bells/", default=None, blank=True)
+    audio_file = models.FileField(upload_to="media/bell_sounds/%Y/%m/%d/", default=None, blank=True)
     status = models.CharField(max_length=50, choices=STATUS_BELL, default="PENDING")
-    image = models.ImageField(upload_to="bell_images/", default=None, blank=True)
+    image = models.ImageField(upload_to="media/bell_images/%Y/%m/%d/", default=None, blank=True)
     belltower = models.ForeignKey(
         Belltower, on_delete=models.CASCADE, related_name="bells"
     )

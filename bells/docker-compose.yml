@@ -1,67 +1,18 @@
-version: '3.4'
-
+version: "3.11"
+   
 services:
-
-  client:
-    build:
-      context: .
-      target: build-node
-    command: npm run dev
-    volumes:
-      - .:/home/node/app
-      # node_modules is not shared with the host
-      - /home/node/app/node_modules
-      - client:/home/node/app/client/dist
-
   db:
-    image: postgres:16-alpine
+    image: nouchka/sqlite3:latest
     volumes:
-      - pgdata:/var/lib/postgresql/data/
-      - .data/db_dumps:/db_dumps
-    healthcheck:
-      test: pg_isready -d bells
-      interval: 5s
-      timeout: 10s
-      retries: 120
+      - ./data/db:/root/db
     environment:
-      - POSTGRES_DB=bells
-      - POSTGRES_PASSWORD=postgres
-
-  app:
-    <<: &COMMON
-      build:
-        context: .
-        target: build-python
-        args:
-          PY_REQUIREMENTS_FILE: requirements-dev.txt
-      environment:
-        - DEBUG=true
-        - DJANGO_ENV=development
-        - DATABASE_URL=postgres://postgres:postgres@db:5432/bells
-        - SECRET_KEY=not-secret
-      restart: on-failure
-      depends_on:
-        db:
-          condition: service_healthy
-    command: python manage.py runserver 0.0.0.0:8000
+      - SQLITE3_DB=db.sqlite3
+  web:
+    build: .
+    command: python3.11 manage.py runserver 172.0.0.1:8000
+    volumes:
+      - .:/code
     ports:
-      - ${PORT:-8000}:8000
-    stdin_open: true
-    tty: true
-    volumes:
-      - .:/app
-      - /app/.venv
-      - /app/bells.egg-info
-      - client:/app/client/dist
-
-  django-migrate:
-    <<: *COMMON
-    command: python manage.py migrate --noinput
-    volumes:
-      - .:/app
-      - /app/.venv
-      - /app/bells.egg-info
-
-volumes:
-  client:
-  pgdata:
+      - "8000:8000"
+    depends_on:
+      - db

@@ -39,7 +39,8 @@ DEBUG = config.DEBUG
 
 ALLOWED_HOSTS = config.ALLOWED_HOSTS
 
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # Here
+MEDIA_URL = "/media/"
 # Application definition
 
 INSTALLED_APPS = [
@@ -141,12 +142,12 @@ STATICFILES_DIRS = [
 # Whitenoise
 # http://whitenoise.evans.io/en/stable/
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Match filename with 12 hex digits before the extension
-WHITENOISE_IMMUTABLE_FILE_TEST = lambda _, url: re.match(  # noqa: E731
-    r"^.+\.[0-9a-f]{12}\..+$", url
-)
+# WHITENOISE_IMMUTABLE_FILE_TEST = lambda _, url: re.match(  # noqa: E731
+#     r"^.+\.[0-9a-f]{12}\..+$", url
+# )
 
 
 # Default primary key field type

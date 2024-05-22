@@ -57,7 +57,14 @@
                     <td>{{ bell.name }}</td>
                     <td>{{ bell.weight }}</td>
                     <td>{{ bell.manufacturer }}</td>
-                    <td>{{ bell.audio_file }}</td>
+                    <td>{% if bell.audio_file %}
+                    <audio controls>
+                        <source src="{{ bell.audio_file.url }}" type="audio/mpeg">
+                        Ваш браузер не поддерживается
+                    </audio>
+                {% else %}
+                    Нет доступных аудио
+                {% endif %}</td>
                     <td>{{ bell.status|translate_status }}</td>
                     <td>
                         {% if bell.image %}
