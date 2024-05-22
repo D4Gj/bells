@@ -18,8 +18,8 @@ STATUS_BELL = (
 
 
 class Temple(models.Model):
-    name = models.CharField(max_length=100)
-    address = models.CharField(max_length=200)
+    name = models.CharField(max_length=100, verbose_name="Имя")
+    address = models.CharField(max_length=200, verbose_name="Адрес")
 
     class Meta:
         verbose_name = "Храм"
@@ -30,8 +30,8 @@ class Temple(models.Model):
 
 
 class Belltower(models.Model):
-    temple = models.OneToOneField(Temple, on_delete=models.CASCADE, primary_key=True)
-    belltower_name = models.CharField(max_length=100)
+    temple = models.OneToOneField(Temple, on_delete=models.CASCADE, primary_key=True, verbose_name="Церковь")
+    belltower_name = models.CharField(max_length=100, verbose_name="Название колокольни")
 
     class Meta:
         verbose_name = "Колокольня"
@@ -42,14 +42,14 @@ class Belltower(models.Model):
 
 
 class Bell(models.Model):
-    name = models.CharField(max_length=100)
-    weight = models.FloatField()
-    manufacturer = models.CharField(max_length=100)
-    audio_file = models.FileField(upload_to="media/bell_sounds/%Y/%m/%d/", default=None, blank=True)
-    status = models.CharField(max_length=50, choices=STATUS_BELL, default="PENDING")
-    image = models.ImageField(upload_to="media/bell_images/%Y/%m/%d/", default=None, blank=True)
+    name = models.CharField(max_length=100, verbose_name="Название")
+    weight = models.FloatField(verbose_name="Вес")
+    manufacturer = models.CharField(max_length=100, verbose_name="Производитель")
+    audio_file = models.FileField(upload_to="media/bell_sounds/%Y/%m/%d/", default=None, blank=True, verbose_name="Аудио файл")
+    status = models.CharField(max_length=50, choices=STATUS_BELL, default="PENDING", verbose_name="Статус")
+    image = models.ImageField(upload_to="media/bell_images/%Y/%m/%d/", default=None, blank=True, verbose_name="Картинка")
     belltower = models.ForeignKey(
-        Belltower, on_delete=models.CASCADE, related_name="bells"
+        Belltower, on_delete=models.CASCADE, related_name="bells", verbose_name="Колоколня"
     )
 
     class Meta:
@@ -97,11 +97,11 @@ class CustomUser(AbstractUser):
         ("moderator", "Moderator"),
     )
 
-    email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=15, unique=False)
-    user_type = models.CharField(max_length=20, choices=ROLE_CHOICES, unique=False)
-    is_key_keeper = models.BooleanField(default=False)
-    is_bell_ringer = models.BooleanField(default=False)
+    email = models.EmailField(unique=True, verbose_name="Эл. почта")
+    phone_number = models.CharField(max_length=15, unique=False, verbose_name="Номер телефона")
+    user_type = models.CharField(max_length=20, choices=ROLE_CHOICES, unique=False, verbose_name="Роль пользователя")
+    is_key_keeper = models.BooleanField(default=False, verbose_name="Хранитель ключа")
+    is_bell_ringer = models.BooleanField(default=False, verbose_name="Звонитель")
 
     objects = CustomUserManager()
     USERNAME_FIELD = "email"
